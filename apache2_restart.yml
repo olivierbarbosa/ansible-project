@@ -1,10 +1,10 @@
 ---
-- hosts: all
+- name: Redémarrer Apache2
+  hosts: all
+  become: true
+
   tasks:
-    - name: Redémarrer Apache2
-      become: yes
-      become_user: ansible
-      systemd:
+    - name: Redémarrer le service Apache2
+      service:
         name: apache2
         state: restarted
-      when: ansible_facts.services['apache2.service'] is defined
