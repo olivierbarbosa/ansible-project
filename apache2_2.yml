@@ -1,0 +1,10 @@
+---
+- name: Redémarrer Apache2
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Redémarrer le service Apache2
+      service:
+        name: apache2
+        state: restarted
