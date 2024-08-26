@@ -1,0 +1,10 @@
+- name: Trouver les fichiers volumineux
+  find:
+    paths: /
+    patterns: "*"
+    size: +1G
+  register: fichiers_volumineux
+
+- name: Afficher les fichiers volumineux
+  debug:
+    var: fichiers_volumineux.files
