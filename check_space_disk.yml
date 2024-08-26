@@ -1,3 +1,4 @@
+---
 - name: Trouver les fichiers volumineux
   find:
     paths: /
