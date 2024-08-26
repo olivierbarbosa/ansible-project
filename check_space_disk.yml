@@ -1,14 +1,14 @@
 ---
-- name: Recherche du fichier le plus volumineux
+- name: Recherche des fichiers les plus volumineux
   hosts: all
   become: true
   gather_facts: false
 
   tasks:
-    - name: Trouver le fichier le plus volumineux
-      shell: du -a / | sort -n -r | head -n 1
-      register: largest_file
+    - name: Trouver les fichiers les plus volumineux
+      shell: find / -type f -exec du -h {} + | sort -h -r | head -n 10
+      register: largest_files
 
     - name: Afficher le résultat
       debug:
-        var: largest_file.stdout_lines
+        var: largest_files.stdout_lines
